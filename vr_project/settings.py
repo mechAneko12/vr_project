@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'manager',
+
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -157,3 +160,11 @@ DATABASES['default'].update(db_from_env)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
+
+CLOUDINARY_STORAGE = {
+'CLOUD_NAME': 'hx3z2s9d0',
+'API_KEY': '933189843785415',
+'API_SECRET': 'MBTf2ZZ2kKAUun5IMuHrpRyafWk'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
