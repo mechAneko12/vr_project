@@ -140,6 +140,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
 
+STATIC_ROOT = 'staticfiles'
+
 DEBUG = False
 
 try:
@@ -157,9 +159,7 @@ if not DEBUG:
 db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
 DATABASES['default'].update(db_from_env)
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 
