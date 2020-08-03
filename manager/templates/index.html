@@ -7,16 +7,16 @@
     <title>Unity WebGL Player | webgl for django</title>
     <link rel="icon" href="{% static 'img/icon.png' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'img/icon.png' %}">
-    <link rel="stylesheet" href="{% static TemplateData/style.css %}">
+    <link rel="stylesheet" href="{% static 'TemplateData/style.css' %}">
 
     <script src="{% static Build/UnityLoader.js %}"></script>
-    <script> var gameInstance = UnityLoader.instantiate("gameContainer", "{% static Build/webgl for django.json %}");</script>
+    <script> var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'Build/webgl for django.json' %}");</script>
     
-    <script src="{% static TemplateData/UnityProgress.js %}"></script>
-    <script src="{% static script.js %}"></script>
-    <script src="{% static Build/UnityLoader.js %}"></script>
+    <script src="{% static 'TemplateData/UnityProgress.js' %}"></script>
+    <script src="{% static 'script.js' %}"></script>
+    <script src="{% static 'Build/UnityLoader.js' %}"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "{% static Build/webgl for django.json %}", {onProgress: UnityProgress});
+      var unityInstance = UnityLoader.instantiate("unityContainer", "{% static 'Build/webgl for django.json' %}", {onProgress: UnityProgress});
     </script>
   </head>
   <body>
