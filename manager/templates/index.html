@@ -1,37 +1,32 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang='ja'>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="{% static 'img/icon.png' %}">
-  <link rel="shortcut icon" type="image/png" href="{% static 'img/icon.png' %}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | webgl for django</title>
+    <link rel="icon" href="{% static 'img/icon.png' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/icon.png' %}">
+    <link rel="stylesheet" href="{% static TemplateData/style.css %}">
 
-  <title>Worker List</title>
-</head>
-<body>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>名前</th>
-        <th>性別</th>
-        <th>誕生日</th>
-      </tr>
-    </thead>
-    <tbody>
-        {% for worker in workers %}
-        <tr>
-          <td>{{worker.id}}</td>
-          <td>{{worker.person.name}}</td>
-          <td>{{worker.person.sex}}</td>
-          <td>{{worker.person.birthday}}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-  </table>
-</body>
+    <script src="{% static Build/UnityLoader.js %}"></script>
+    <script> var gameInstance = UnityLoader.instantiate("gameContainer", "{% static Build/webgl for django.json %}");</script>
+    
+    <script src="{% static TemplateData/UnityProgress.js %}"></script>
+    <script src="{% static script.js %}"></script>
+    <script src="{% static Build/UnityLoader.js %}"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "{% static Build/webgl for django.json %}", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">webgl for django</div>
+      </div>
+    </div>
+  </body>
 </html>
