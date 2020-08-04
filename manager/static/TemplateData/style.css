@@ -1,6 +1,59 @@
-.webgl-content * {border: 0; margin: 0; padding: 0}
-.webgl-content {position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
+.button_cover{
+    text-align: left;
+}
 
+
+.button_on{
+    border-width: 3px;
+    border-color: #e6e6e6;
+    border-style: solid;
+    background-color: #b7e4ed;
+    padding: 5px 20px 5px 20px;
+    color: #1a1a1a;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 20px;
+    border-radius: 3px;
+}
+.button_on:hover{
+    border-color: #1988ff;
+}
+.button_on:active{
+    background-color: #f0f0f0;
+}
+
+.button_off{
+    border-width: 3px;
+    border-color: #e6e6e6;
+    border-style: solid;
+    background-color: #ffb5b5;
+    padding: 5px 20px 5px 20px;
+    color: #1a1a1a;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 20px;
+    border-radius: 3px;
+}
+.button_off:hover{
+    border-color: #ff2b2b;
+}
+.button_off:active{
+    background-color: #f0f0f0;
+}
+
+.form_send{
+    text-align: center;
+    padding: 0px 50px 0px 50px;
+}
+
+
+#neko{
+    text-align: center;
+}
+
+.webgl-content * {border: 0; margin: 0; padding: 0}
+/*.webgl-content {position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
+*/
 .webgl-content .logo, .progress {position: absolute; left: 50%; top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%);}
 .webgl-content .logo {background: url('progressLogo.Light.png') no-repeat center / contain; width: 154px; height: 130px;}
 .webgl-content .progress {height: 18px; width: 141px; margin-top: 90px;}
@@ -16,3 +69,4 @@
 .webgl-content .footer .webgl-logo {background-image: url('webgl-logo.png'); width: 204px; float: left;}
 .webgl-content .footer .title {margin-right: 10px; float: right;}
 .webgl-content .footer .fullscreen {background-image: url('fullscreen.png'); width: 38px; float: right;}
+
