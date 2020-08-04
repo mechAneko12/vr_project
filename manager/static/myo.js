@@ -111,7 +111,7 @@ const characteristics = {
   }
 }
 
-var unityInstance;
+//var unityInstance;
 
 var _this;
 var state = {};
@@ -153,7 +153,7 @@ class MyoWebBluetooth{
     .then(server => {
       console.log('server device: '+ Object.keys(server.device));
       document.blue.src = "https://res.cloudinary.com/hx3z2s9d0/image/upload/v1577098188/neko_2.gif";
-      unityInstance = UnityLoader.instantiate("unityContainer", "Build/%UNITY_WEB_NAME%.json", {onProgress: UnityProgress});
+      //unityInstance = UnityLoader.instantiate("unityContainer", "Build/%UNITY_WEB_NAME%.json", {onProgress: UnityProgress});
       this.getServices([services.controlService, services.emgDataService, services.imuDataService], [characteristics.commandCharacteristic, characteristics.emgData0Characteristic, characteristics.emgData1Characteristic, characteristics.emgData2Characteristic, characteristics.emgData3Characteristic, characteristics.imuDataCharacteristic], server);
     })
     .catch(error => {console.log('error',error)})
