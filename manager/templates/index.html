@@ -4,17 +4,17 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | webgl for django</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
+    <link rel="shortcut icon" href="{% static 'TemplateData/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'TemplateData/style.css' %}">
 
-    <script src="Build/UnityLoader.js"></script>
-    <script> var gameInstance = UnityLoader.instantiate("gameContainer", "Build/webgl for django.json");</script>
+    <script src="{% static 'Build/UnityLoader.js' %}"></script>
+    <script> var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'Build/webgl for django.json' %}");</script>
     
-    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="{% static 'TemplateData/UnityProgress.js' %}"></script>
     <!-- script src="script.js"></script-->
-    <script src="Build/UnityLoader.js"></script>
+    <script src="{% static 'Build/UnityLoader.js' %}"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/webgl for django.json", {onProgress: UnityProgress});
+      var unityInstance = UnityLoader.instantiate("unityContainer", "{% static 'Build/webgl for django.json' %}", {onProgress: UnityProgress});
     </script>
   </head>
   <body>
@@ -40,7 +40,7 @@
       </div>
     </div>
     <!---->
-    <script src="myo.js"></script>
+    <script src="{% static 'myo.js' %}"></script>
 
   </body>
 </html>
