@@ -1,4 +1,5 @@
 //
+
 var myoController;
 var myobluetoothDevice;
 var csv_flag = false;
@@ -51,7 +52,19 @@ document.querySelector('#disconnect').addEventListener('click', function(event) 
 });
 //
 
+/*---------------------------------------*/
+function classdata(){
+  return Array(0.0168,0.0001,0.00014,0.95).join();
+}
 
+function quaterniondata(){
+  if(orientationData == undefined){
+    return Array(0.0,0.0,0.0, 1.0).join();
+  }else{
+    return Array(orientationData.x, orientationData.y, orientationData.z, orientationData.w).join();
+  }
+}
+/*---------------------------------------*/
 
 const services = {
   controlService: {

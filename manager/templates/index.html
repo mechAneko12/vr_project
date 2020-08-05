@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang='ja'>
+<html lang="en-us">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | webgl for django</title>
-    <link rel="icon" href="{% static 'img/icon.png' %}">
-    <link rel="shortcut icon" type="image/png" href="{% static 'img/icon.png' %}">
-    <link rel="stylesheet" href="{% static 'TemplateData/style.css' %}">
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
 
-    <script src="{% static 'Build/UnityLoader.js' %}"></script>
-    <script> var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'Build/webgl for django.json' %}");</script>
+    <script src="Build/UnityLoader.js"></script>
+    <script> var gameInstance = UnityLoader.instantiate("gameContainer", "Build/webgl for django.json");</script>
     
-    <script src="{% static 'TemplateData/UnityProgress.js' %}"></script>
-    <script src="{% static 'script.js' %}"></script>
-    <script src="{% static 'Build/UnityLoader.js' %}"></script>
+    <script src="TemplateData/UnityProgress.js"></script>
+    <!-- script src="script.js"></script-->
+    <script src="Build/UnityLoader.js"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "{% static 'Build/webgl for django.json' %}", {onProgress: UnityProgress});
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/webgl for django.json", {onProgress: UnityProgress});
     </script>
   </head>
   <body>
@@ -29,7 +27,7 @@
         </div>
       </form>
       <div id = "neko">
-        <img name = "blue" class = "img_sample" height="250" width = "250" src="https://res.cloudinary.com/hx3z2s9d0/image/upload/v12345678/Rotating_earth__large_wy9cfd.gif" width="200"/>
+        <img name = "blue" class = "img_sample" height="250" width = "250" src="https://res.cloudinary.com/hx3z2s9d0/image/upload/v1577098188/neko_3.gif" width="200"/>
       </div>
     </div>
     <!--e-->
@@ -42,6 +40,7 @@
       </div>
     </div>
     <!---->
-    <script src="{% static 'myo.js' %}"></script>
+    <script src="myo.js"></script>
+
   </body>
 </html>
