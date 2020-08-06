@@ -20,8 +20,8 @@ def index(request):
 def return_class(request):
   emg_arr_raw = request.POST.getlist('emg_arr[]')
   emg_arr = np.empty((0, 8))
-  for i in range(len(emg_arr_raw)):
-    row = np.array([[int(x) for x in emg_arr.split(",")]])
+  for row_raw in emg_arr_raw:
+    row = np.array([[int(x) for x in row_raw.split(",")]])
     emg_arr = np.concatenate([emg_arr, row], axis=0)
   
   predicted_class = emg_arr
