@@ -22,7 +22,7 @@ def return_class(request):
   emg_arr = np.empty((0, 8))
   for row_raw in emg_arr_raw:
     row = np.array([[int(x) for x in row_raw.split(",")]])
-    emg_arr = np.concatenate([emg_arr, row], axis=0)
+    #emg_arr = np.concatenate([emg_arr, row], axis=0)
   
   predicted_class = emg_arr
   d = {"predicted_class": predicted_class}
