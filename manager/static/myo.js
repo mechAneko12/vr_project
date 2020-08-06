@@ -73,7 +73,7 @@ function post_emg_arr(emg_arr){
       dataType: 'json',
       //contentType: 'application/json',
       data: {
-        'emg_arr[]': emg_arr
+        'emg_arr[][]': emg_arr
       }
   }).done(function(data, textStatus, jqXHR) {
       return data;
