@@ -18,6 +18,6 @@ def index(request):
 #predicted_classを返すfunction
 
 def return_class(request):
-  predicted_class = request.POST.get('emg_arr[]')
-  d = {"predicted_class[]": predicted_class}
+  predicted_class = request.POST.getlist('emg_arr[]')
+  d = {"predicted_class": predicted_class}
   return JsonResponse(d)
