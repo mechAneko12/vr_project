@@ -36,6 +36,7 @@ document.querySelector('#startNotifications').addEventListener('click', function
       emg_arr.push(emgData0);
       emg_arr.push(emgData1);
     }
+    console.log(emg_arr);
     
 
     if(emg_arr.length == (32 + sample_num)){
