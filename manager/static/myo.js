@@ -32,8 +32,11 @@ document.querySelector('#startNotifications').addEventListener('click', function
     //console.log(orientationData);
     //console.log(accelerometerData);
     //console.log(gyroscopeData);
-    emg_arr.push(emgData0);
-    emg_arr.push(emgData1);
+    if (emgData0 != undefined && emgData1 != undefined){
+      emg_arr.push(emgData0);
+      emg_arr.push(emgData1);
+    }
+    
 
     if(emg_arr.length == (32 + sample_num)){
       response = post_emg_arr(emg_arr);
