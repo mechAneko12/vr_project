@@ -25,8 +25,8 @@ def return_class(request):
     row_raw.split(",")
     
     row = np.array([[int(x) for x in row_raw.split(",")]])
-    #emg_arr = np.concatenate([emg_arr, row], axis=0)"""
+    emg_arr = np.concatenate([emg_arr, row], axis=0)
   
-  predicted_class = emg_arr_raw
-  d = {"predicted_class": predicted_class}
+  predicted_class = list(emg_arr)
+  d = {"predicted_class": str(predicted_class)}
   return JsonResponse(d)
