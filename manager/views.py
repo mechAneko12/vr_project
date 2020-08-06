@@ -9,6 +9,15 @@ import numpy as np
 import urllib.request
 
 # Create your views here.
+#page funnction
 def index(request):
   template_name = "index.html" # templates以下のパスを書く
   return render(request,template_name)
+
+
+#predicted_classを返すfunction
+
+def return_class(request):
+  predicted_class = 1
+  d = {"predicted_class": predicted_class}
+  return JsonResponse(d)

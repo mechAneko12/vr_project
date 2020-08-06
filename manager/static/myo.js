@@ -1,10 +1,12 @@
-//
+/*Bluetooth Function*/
 
 var myoController;
 var myobluetoothDevice;
-var csv_flag = false;
-var timerID;
 let accelerometerData, gyroscopeData, emgData0, emgData1, orientationData;
+
+var emg_arr = new Array();
+let sample_num = 20;
+var predicted_class = 0;
 //myo deviceをconnect
 document.querySelector('#startNotifications').addEventListener('click', function(event) {
   event.stopPropagation();
@@ -25,18 +27,26 @@ document.querySelector('#startNotifications').addEventListener('click', function
     orientationData = state.orientation;
     accelerometerData = state.accelerometer;
     gyroscopeData = state.gyroscope;
-    console.log(emgData0);
-    console.log(emgData1);
-    console.log(orientationData);
-    console.log(accelerometerData);
-    console.log(gyroscopeData);
-    /*
-    if(csv_flag == true && emgData0 !== undefined){
-      emgData0 = Object.entries(emgData0);
-      array_data.push([Date.now() - start_time, emgData0[0][1], emgData0[1][1], emgData0[2][1], emgData0[3][1], emgData0[4][1], emgData0[5][1], emgData0[6][1], emgData0[7][1]]);
-    }*/
+    //console.log(emgData0);
+    //console.log(emgData1);
+    //console.log(orientationData);
+    //console.log(accelerometerData);
+    //console.log(gyroscopeData);
+    emg_arr.push(emgData0);
+    emg_arr.push(emgData1);
+
+    if(emg_arr.length == (32 + sample_num)){
+      response = post_emg_arr(emg_arr);
+      response.then(function(data){
+        predicted_class = data.predicted_class;
+        console.log(typeof predicted_class);
+        console.log(predicted_class);
+      });
+
+      emg_arr.splice(0, (2 + sample_num));
+    }
+
   });
-  
 });
 
 //myo deviceをdisconnect
@@ -50,11 +60,29 @@ document.querySelector('#disconnect').addEventListener('click', function(event) 
   myoController.disconnect();
   document.blue.src = "https://res.cloudinary.com/hx3z2s9d0/image/upload/v1577098188/neko_3.gif";
 });
-//
 
-/*---------------------------------------*/
+/*ajax function*/
+function post_emg_arr(emg_arr){
+  return $.ajax({
+      url: '/return_class/',
+      type: 'POST',
+      headers:{'X-CSRFToken': '{{csrf_token}}'},
+      
+      dataType: 'json',
+      //contentType: 'application/json',
+      data: {
+        'emg_arr': emg_arr
+      }
+  }).done(function(data, textStatus, jqXHR) {
+      return data;
+  });
+}
+
+
+/*.jslib Function---------------------------------------*/
+
 function classdata(){
-  return Array(0.0168,0.0001,0.00014,0.95).join();
+  return predicted_class;
 }
 
 function quaterniondata(){
@@ -64,7 +92,41 @@ function quaterniondata(){
     return Array(orientationData.x, orientationData.y, orientationData.z, orientationData.w).join();
   }
 }
-/*---------------------------------------*/
+/*get cookie---------------------------------------*/
+/*
+function getCookie(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+          var cookie = jQuery.trim(cookies[i]);
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+          }
+      }
+  }
+  return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+*/
+
+
+/*Myo Armband*/
+
 
 const services = {
   controlService: {
