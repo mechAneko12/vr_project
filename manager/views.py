@@ -18,11 +18,11 @@ def index(request):
 #predicted_classを返すfunction
 
 def return_class(request):
-  emg_arr_raw = request.POST.getlist('emg_arr[]')[0][:8]
+  emg_arr_raw = request.POST.getlist('emg_arr[]')
   
   emg_arr = np.empty((0, 8))
   for row_raw in emg_arr_raw:
-    string(row_raw).split(",")
+    row_raw.split(",")
     """
     #row = np.array([[int(x) for x in row_raw.split(",")]])
     #emg_arr = np.concatenate([emg_arr, row], axis=0)"""
