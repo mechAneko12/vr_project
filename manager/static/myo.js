@@ -1,4 +1,4 @@
-/*Bluetooth Function*/
+/*Bluetooth Function--------------------------------------*/
 
 var myoController;
 var myobluetoothDevice;
@@ -61,7 +61,7 @@ document.querySelector('#disconnect').addEventListener('click', function(event) 
   document.blue.src = "https://res.cloudinary.com/hx3z2s9d0/image/upload/v1577098188/neko_3.gif";
 });
 
-/*ajax function*/
+/*ajax function--------------------------------------*/
 function post_emg_arr(emg_arr){
   return $.ajax({
       url: '/return_class/',
@@ -78,22 +78,8 @@ function post_emg_arr(emg_arr){
   });
 }
 
+/*get cookie*/
 
-/*.jslib Function---------------------------------------*/
-
-function classdata(){
-  return predicted_class;
-}
-
-function quaterniondata(){
-  if(orientationData == undefined){
-    return Array(0.0,0.0,0.0, 1.0).join();
-  }else{
-    return Array(orientationData.x, orientationData.y, orientationData.z, orientationData.w).join();
-  }
-}
-/*get cookie---------------------------------------*/
-/*
 function getCookie(name) {
   var cookieValue = null;
   if (document.cookie && document.cookie !== '') {
@@ -121,8 +107,23 @@ $.ajaxSetup({
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
         }
     }
-});
-*/
+})
+
+
+
+/*.jslib Function---------------------------------------*/
+
+function classdata(){
+  return predicted_class;
+}
+
+function quaterniondata(){
+  if(orientationData == undefined){
+    return Array(0.0,0.0,0.0, 1.0).join();
+  }else{
+    return Array(orientationData.x, orientationData.y, orientationData.z, orientationData.w).join();
+  }
+}
 
 
 /*Myo Armband*/
