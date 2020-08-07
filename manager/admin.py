@@ -1,6 +1,7 @@
 from django.contrib import admin
-from manager.models import Wavelet_Class
+from manager.models import Wavelet, Weight
 
 # Register your models here.
 
-admin.site.register(Wavelet_Class)
+admin.site.register(Wavelet)
+admin.site.register(Weight)
