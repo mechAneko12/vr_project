@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http.response import JsonResponse
 from django.http import HttpResponse
-from .models import Data
+from .models import Wavelet_Class
 import datetime
 from django.core import serializers
 import json
