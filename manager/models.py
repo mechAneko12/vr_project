@@ -8,5 +8,5 @@ class Wavelet(models.Model):
     class_label = models.IntegerField()
 
 class Weight(models.Model):
-    affine1 = ArrayField(ArrayField(models.FloatField(), size=5), size=5)
-    affine2 = ArrayField(ArrayField(models.FloatField(), size=5), size=5)
+    affine1 = ArrayField(ArrayField(models.FloatField(), size=240), size=300)
+    affine2 = ArrayField(ArrayField(models.FloatField(), size=300), size=6)
