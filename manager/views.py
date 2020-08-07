@@ -11,7 +11,7 @@ import urllib.request
 # Create your views here.
 #page funnction
 def index(request):
-  Weight.objects.create(affine1=[[0,0,0,0,0],[0,0,0,0,0]])
+  Weight.objects.create(affine1=[[0,0,0,0,0],[0,0,0,0,0]], affine=1)
   template_name = "index.html" # templates以下のパスを書く
   return render(request,template_name)
 
