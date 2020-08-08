@@ -359,7 +359,7 @@ for lay_name in weights['layer_name']:
 N = weights['N']
 def return_class(request):
     global layers, N
-    emg_arr_raw = request.POST.getlist('emg_arr')
+    emg_arr_raw = request.POST.getlist('emg_arr[]')
     d = {"predicted_class": len(emg_arr_raw)}
     return JsonResponse(d)
     emg_arr = np.empty((0, 8))
