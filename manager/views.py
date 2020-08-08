@@ -16,7 +16,7 @@ def index(request):
 
 
 #predicted_classを返すfunction
-json_open = open('static/jsonfiles/weight_data.json', 'r')
+json_open = open('staticfiles/jsonfiles/weight_data.json', 'r')
 weights = json.load(json_open)
 input_size = int(weights['input_size'])
 hidden_size = int(weights['hidden_size'])
