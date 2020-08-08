@@ -40,7 +40,7 @@ document.querySelector('#startNotifications').addEventListener('click', function
 
     if(emg_arr.length == (32 + sample_num)){
       console.log(emg_arr.length);
-      response = post_emg_arr(emg_arr[0]);
+      response = post_emg_arr(emg_arr.flat());
       response.then(function(data){
         predicted_class = data.predicted_class;
         console.log(predicted_class);
