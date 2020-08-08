@@ -6,7 +6,6 @@ import datetime
 from django.core import serializers
 import json
 import numpy as np
-import sc
 import urllib.request
 
 from collections import OrderedDict
