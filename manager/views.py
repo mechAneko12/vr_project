@@ -23,6 +23,8 @@ def index(request):
     template_name = "index.html" # templates以下のパスを書く
     return render(request,template_name)
 
+
+#classes
 class DWT_N:
     def __init__(self, n):
         if n < 4:
