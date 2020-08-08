@@ -6,7 +6,7 @@ import datetime
 from django.core import serializers
 import json
 import numpy as np
-import scipy.stats as stats
+import scipy
 import urllib.request
 
 from collections import OrderedDict
@@ -381,7 +381,7 @@ def return_class(request):
     predicted_data = predict(layers, wavelet, train_flg=False)
     predicted_class = predicted_data.argmax(axis=1)
     
-    d = {"predicted_class": stats.mode(list(predicted_class)}
+    d = {"predicted_class": str(predicted_class)}
     return JsonResponse(d)
 
 def predict(layers, x, train_flg=True):
