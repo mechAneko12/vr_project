@@ -5,7 +5,7 @@ var myobluetoothDevice;
 let accelerometerData, gyroscopeData, emgData0, emgData1, orientationData;
 
 var emg_arr = new Array();
-let sample_num = 20;
+let sample_num = 32;
 var predicted_class = 0;
 //myo deviceをconnect
 document.querySelector('#startNotifications').addEventListener('click', function(event) {
@@ -39,14 +39,13 @@ document.querySelector('#startNotifications').addEventListener('click', function
     
 
     if(emg_arr.length == (32 + sample_num)){
-      console.log(emg_arr.length);
       response = post_emg_arr(emg_arr.flat());
       response.then(function(data){
         predicted_class = data.predicted_class;
         console.log(predicted_class);
       });
 
-      emg_arr.splice(0, (2 + sample_num));
+      emg_arr.splice(0, (32 + sample_num));
     }
 
   });
