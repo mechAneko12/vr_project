@@ -374,6 +374,7 @@ def return_class(request):
         f = copy.copy(emg_arr[i:i+N][:])
         dwt.main(f)
         wavelet = np.concatenate([wavelet, f[:][2:].T.reshape(1,(N-2)*8)], axis=0)
+    return
     predicted_data = predict(layers, wavelet, train_flg=False)
     predicted_class = predicted_data.argmax(axis=1)
     
