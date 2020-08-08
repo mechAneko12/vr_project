@@ -117,36 +117,8 @@ function post_emg_arr(emg_arr){
 
 
 /*.jslib Function---------------------------------------*/
-Array.prototype.mode = function() {
-  //要素の最頻値(モード)を求める。
-  //配列に影響しない。
-  var array_length, count, i, max, value;
-  array_length = this.length;
-  count = [];
-  for (i = 0; i < array_length; i++) {
-    if (count[this[i]]) {
-      count[this[i]] ++;
-    } else {
-      count[this[i]] = 1;
-    }
-  }
-  max = 0;
-  for (i = 0; i < count.length; i++) {
-    if (count[i] > max) {
-      max = count[i];
-      value = i;
-    }
-  }
-  if (value > 1) {
-    return value;
-  } else {
-    return "Error"; //重複がない場合はエラー。
-  }
-}
-
 function classdata(){
-  console.log(predicted_class.split(' ').mode())
-  return predicted_class.split(' ').mode();
+  return predicted_class;
 }
 
 function quaterniondata(){

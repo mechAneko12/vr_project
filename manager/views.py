@@ -379,8 +379,8 @@ def return_class(request):
         wavelet = np.concatenate([wavelet, f[:][2:].T.reshape(1,(N-2)*8)], axis=0)
     predicted_data = predict(layers, wavelet, train_flg=False)
     predicted_class = predicted_data.argmax(axis=1)
-    
-    d = {"predicted_class": str(predicted_class)[1:len(str(predicted_class))-2]}
+    c = np.argmmax(np.bincount(predicted_class))
+    d = {"predicted_class": str(c)}
     return JsonResponse(d)
 
 def predict(layers, x, train_flg=True):
