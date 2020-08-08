@@ -7,7 +7,12 @@ from django.core import serializers
 import json
 import numpy as np
 import urllib.request
+
 from collections import OrderedDict
+from only_dwt_2 import DWT_N
+from nn_class import *
+import time
+import copy
 
 # Create your views here.
 #page funnction
