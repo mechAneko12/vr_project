@@ -360,14 +360,14 @@ N = weights['N']
 def return_class(request):
     global layers, N
     emg_arr_raw = request.POST.getlist('emg_arr[]')
-    
+    d = {"predicted_class": str(emg_arr_raw)}
+    return JsonResponse(d)
     emg_arr = np.empty((0, 8))
     for row_raw in emg_arr_raw:
         row_raw.split(",")
         row = np.array([[int(x) for x in row_raw.split(",")]])
         emg_arr = np.concatenate([emg_arr, row], axis=0)
-
-    return
+    
     dwt = DWT_N(N)
     dwt.filter()
     wavelet = np.empty((0, (N-2)*8))
