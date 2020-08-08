@@ -381,7 +381,7 @@ def return_class(request):
     predicted_data = predict(layers, wavelet, train_flg=False)
     predicted_class = predicted_data.argmax(axis=1)
     
-    d = {"predicted_class": stats.mode(predicted_class)}
+    d = {"predicted_class": stats.mode(list(predicted_class)}
     return JsonResponse(d)
 
 def predict(layers, x, train_flg=True):
