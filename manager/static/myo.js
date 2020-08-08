@@ -5,7 +5,7 @@ var myobluetoothDevice;
 let accelerometerData, gyroscopeData, emgData0, emgData1, orientationData;
 
 var emg_arr = new Array();
-let sample_num = 20;
+let sample_num = 32;
 var predicted_class = 0;
 //myo deviceをconnect
 document.querySelector('#startNotifications').addEventListener('click', function(event) {
@@ -63,23 +63,6 @@ document.querySelector('#disconnect').addEventListener('click', function(event) 
   document.blue.src = "https://res.cloudinary.com/hx3z2s9d0/image/upload/v1577098188/neko_3.gif";
 });
 
-/*ajax function--------------------------------------*/
-function post_emg_arr(emg_arr){
-  return $.ajax({
-      url: '/return_class/',
-      type: 'POST',
-      headers:{'X-CSRFToken': '{{csrf_token}}'},
-      
-      dataType: 'json',
-      //contentType: 'application/json',
-      data: {
-        'emg_arr[]': emg_arr
-      }
-  }).done(function(data, textStatus, jqXHR) {
-      return data;
-  });
-}
-
 /*get cookie*/
 
 function getCookie(name) {
@@ -109,7 +92,27 @@ $.ajaxSetup({
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
         }
     }
-})
+});
+
+
+/*ajax function--------------------------------------*/
+function post_emg_arr(emg_arr){
+  return $.ajax({
+      url: '/return_class/',
+      type: 'POST',
+      headers:{'X-CSRFToken': '{{csrf_token}}'},
+      
+      dataType: 'json',
+      //contentType: 'application/json',
+      data: {
+        'emg_arr': emg_arr
+      }
+  }).done(function(data, textStatus, jqXHR) {
+      return data;
+  });
+}
+
+
 
 
 
