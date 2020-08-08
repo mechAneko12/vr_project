@@ -1,23 +1,3 @@
-Array.prototype.mode = function() {
-  var counter = {}
-  var maxValue = null
-  var maxCounter = 0;
-  for (var i=0;i < this.length;i++){
-    if (!counter[this[i]]){
-      //存在しなかれば作る
-      counter[this[i]] = 0
-    }
-    counter[this[i]]++;
-    for (var j=0;j<Object.keys(counter).length;j++){
-      key = Object.keys(counter)[j];
-      if (counter[key] > maxCounter){
-        maxValue = key
-        maxCounter = counter[key]
-      }
-    }
-  }
-  return eval(maxValue)
-}
 /*Bluetooth Function--------------------------------------*/
 
 var myoController;
@@ -62,7 +42,7 @@ document.querySelector('#startNotifications').addEventListener('click', function
       response = post_emg_arr(emg_arr.flat());
       response.then(function(data){
         predicted_class = data.predicted_class;
-        console.log(predicted_class.split(" "));
+        console.log(predicted_class);
       });
 
       emg_arr.splice(0, (32 + sample_num));
@@ -137,8 +117,29 @@ function post_emg_arr(emg_arr){
 
 
 /*.jslib Function---------------------------------------*/
+Array.prototype.mode = function() {
+  var counter = {}
+  var maxValue = null
+  var maxCounter = 0;
+  for (var i=0;i < this.length;i++){
+    if (!counter[this[i]]){
+      //存在しなかれば作る
+      counter[this[i]] = 0
+    }
+    counter[this[i]]++;
+    for (var j=0;j<Object.keys(counter).length;j++){
+      key = Object.keys(counter)[j];
+      if (counter[key] > maxCounter){
+        maxValue = key
+        maxCounter = counter[key]
+      }
+    }
+  }
+  return eval(maxValue)
+}
+
 function classdata(){
-  return predicted_class;
+  return predicted_class.split(' ').mode();
 }
 
 function quaterniondata(){
