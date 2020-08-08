@@ -42,6 +42,7 @@ document.querySelector('#startNotifications').addEventListener('click', function
       response = post_emg_arr(emg_arr);
       response.then(function(data){
         predicted_class = data.predicted_class;
+        console.log(predicted_class);
       });
 
       emg_arr.splice(0, (2 + sample_num));
