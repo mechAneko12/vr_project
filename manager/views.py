@@ -370,16 +370,22 @@ def return_class(request):
         emg_arr = np.concatenate([emg_arr, row], axis=0)"""
     emg_arr = np.array([float(x) for x in emg_arr_raw]).reshape(-1,8)
     
+    mask_emg_arr = np.empty((0, 8, N))#
+
     dwt = DWT_N(N)
     dwt.filter()
     wavelet = np.empty((0, (N-2)*8))
     for i in range(emg_arr.shape[0] - N):
         f = copy.copy(emg_arr[i:i+N][:])
+        mask_emg_arr = np.concatenate([mask_emg_arr, [emg_arr[i:i+N][:].T]])#
         dwt.main(f)
         wavelet = np.concatenate([wavelet, f[:][2:].T.reshape(1,(N-2)*8)], axis=0)
     predicted_data = predict(layers, wavelet, train_flg=False)
     predicted_class = predicted_data.argmax(axis=1)
-    c = np.argmax(np.bincount(predicted_class))
+
+    mask_emg_arr = np.sum(np.mean(np.abs(mask_emg_arr), axis=2), axis=1) > 30#
+
+    c = np.argmax(np.bincount(predicted_class * mask_emg_arr))
     d = {"predicted_class": str(c)}
     return JsonResponse(d)
 
