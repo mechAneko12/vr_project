@@ -10,7 +10,7 @@ joblib==0.15.1
 kiwisolver==1.2.0
 matplotlib==3.2.1
 myo-python==1.0.4
-numpy==1.18.4
+numpy==1.22.0
 pandas==1.0.3
 Pillow==7.1.2
 psycopg2==2.8.5
