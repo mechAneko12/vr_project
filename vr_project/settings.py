@@ -11,16 +11,23 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import environ
+from decouple import config
+from dj_database_url import parse as dburl
+from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+env = environ.Env()
+env.read_env(os.path.join(BASE_DIR, ".env"))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
+SECRET_KEY = 'w%qzw3hr#y7jbvbfr#yuyvsnx#5+)knxfc91im!druxlxh@3xp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,8 +47,8 @@ INSTALLED_APPS = [
 
     'manager',
 
-    'cloudinary',
-    'cloudinary_storage',
+    # 'cloudinary',
+    # 'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -134,7 +141,7 @@ STATIC_URL = '/static/'
 
 
 #
-import dj_database_url
+# import dj_database_url
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -149,23 +156,33 @@ try:
 except ImportError:
     pass
 
-if not DEBUG:
-    SECRET_KEY = os.environ['SECRET_KEY']
-    #
-    #import django_heroku #追加
-    #django_heroku.settings(locals()) #追加
+
+#     #
+#     #import django_heroku #追加
+#     #django_heroku.settings(locals()) #追加
 
 
-db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-DATABASES['default'].update(db_from_env)
+# ↓ 追加
+default_dburl = "sqlite:///" + str(Path(__file__).resolve().parent.parent / "db.sqlite3")
+
+DATABASES = {
+    "default": config("DATABASE_URL", default=default_dburl, cast=dburl),
+}
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+SUPERUSER_NAME = env("SUPERUSER_NAME")
+SUPERUSER_EMAIL = env("SUPERUSER_EMAIL")
+SUPERUSER_PASSWORD = env("SUPERUSER_PASSWORD")
 
 
 
-CLOUDINARY_STORAGE = {
-'CLOUD_NAME': 'hywy6wr5m',
-'API_KEY': '547491154384589',
-'API_SECRET': 's4JtJ3Z2C_9ipZuApmKIVFiv7Kw'
-}
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# CLOUDINARY_STORAGE = {
+# 'CLOUD_NAME': 'hywy6wr5m',
+# 'API_KEY': '547491154384589',
+# 'API_SECRET': 's4JtJ3Z2C_9ipZuApmKIVFiv7Kw'
+# }
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
