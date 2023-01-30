@@ -3,6 +3,7 @@ cffi
 cycler
 Django
 django-heroku
+django-environ
 gunicorn
 joblib
 kiwisolver
