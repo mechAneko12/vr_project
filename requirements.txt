@@ -2,7 +2,6 @@ asgiref
 cffi
 cycler
 Django
-django-heroku
 django-environ
 gunicorn
 joblib
@@ -15,6 +14,7 @@ Pillow
 psycopg2
 pycparser
 pyparsing
+python-decouple
 python-dateutil
 pytz
 scikit-learn
