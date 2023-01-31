@@ -7,7 +7,7 @@ databases:
 
 services:
   - type: web
-    name: myo-motion
+    name: myo-vr
     env: python
     region: singapore
     buildCommand: './build.sh'
