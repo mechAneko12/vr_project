@@ -7,13 +7,13 @@ databases:
 
 services:
   - type: web
-    name: myo-vr-motion
+    name: myo-motion
     env: python
     region: singapore
     buildCommand: './build.sh'
     startCommand: 'gunicorn vr_project.wsgi:application'
     plan: free
-    branch: main
+    branch: master
     healthCheckPath: /
     envVars:
       - key: DATABASE_URL
