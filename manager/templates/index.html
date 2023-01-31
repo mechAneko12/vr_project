@@ -4,20 +4,20 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | webgl for django</title>
+    <title>Unity WebGL Player | webgl_handmodel</title>
     <link rel="shortcut icon" type="image/png"  href="https://res.cloudinary.com/hx3z2s9d0/image/upload/v1577103870/icon.png">
     <link rel="stylesheet" href="{% static 'TemplateData/style.css' %}">
 
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 
     <script src="{% static 'Build/UnityLoader.js' %}"></script>
-    <script> var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'Build/webgl for django.json' %}");</script>
+    <script> var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'Build/webgl_handmodel.json' %}");</script>
     
     <script src="{% static 'TemplateData/UnityProgress.js' %}"></script>
     <!-- script src="script.js"></script-->
     <script src="{% static 'Build/UnityLoader.js' %}"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "{% static 'Build/webgl for django.json' %}", {onProgress: UnityProgress});
+      var unityInstance = UnityLoader.instantiate("unityContainer", "{% static 'Build/webgl_handmodel.json' %}", {onProgress: UnityProgress});
     </script>
   </head>
   <body>
@@ -39,11 +39,11 @@
       <div class="footer">
         <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">webgl for django</div>
+        <div class="title">webgl_handmodel</div>
       </div>
     </div>
     <!---->
-    <script src="{% static 'myo.js' %}"></script>
+    <script src="{% static 'myo_gesture_ctrl.js' %}"></script>
 
   </body>
 </html>
